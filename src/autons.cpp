@@ -320,3 +320,11 @@ void measure_offsets() {
 // . . .
 // Make your own autonomous functions here!
 // . . .
+
+void printToBrain(){
+  while(true){
+      pros::screen::print(pros::E_TEXT_LARGE,3,"Claw Position: %f",(claw.get_position()));
+      pros::delay(50);
+  }
+  
+}

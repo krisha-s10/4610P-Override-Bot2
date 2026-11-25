@@ -262,6 +262,7 @@ void opcontrol() {
     // Gives you some extras to make EZ-Template ezier
     // add macros
     ez_template_extras();
+    pros::Task ptb(printToBrain);
 
     chassis.opcontrol_tank();  // Tank control
       chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
@@ -304,6 +305,17 @@ void opcontrol() {
 
     //   //FIX THIS
     // }
+
+    if (master.get_digital(DIGITAL_A)){
+      claw.move(127);
+    }
+    else if (master.get_digital(DIGITAL_X)){
+      claw.move(-127);
+    }
+    else{
+      claw.set_brake_mode(MOTOR_BRAKE_HOLD);
+      claw.brake();
+    }
 
     // claw.button_toggle(master.get_digital(DIGITAL_L2));
     
